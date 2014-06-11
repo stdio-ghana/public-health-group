@@ -1,0 +1,14 @@
+We have a as spelt out the functional and non fuctional requirement our softwae will need to function.
+
+Fuctional Requirements:With the assumption tahat we already have the data.
+*Loading the data onto an array in the system.
+*Generating a plot from the loaded data(pie-chart,bar,time-series).
+*Further generates a brief statistical interpretation of the plot.
+
+Use Case:
+A user should be able to quer to have a short forcast report depicting some statistics on the data.
+
+Non-Functional Requirements:
+*Interaction with the central system of the hospitals to get information on the related disease within a specific time frame.
+
+
