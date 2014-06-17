@@ -1,27 +1,29 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 16 11:06:42 2014
 
 @author: WILLICHIE
 """
 import csv
 from pylab import *
-
-#THIS LIST HOLDS VALUES FOR CREATION OF GRAPHS AND TABLES
 mydata =[]
 with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","rb") as csvfile:
-    spamreader = csv.DictReader(1csvfile)
-        
+    spamreader = csv.DictReader(csvfile)    
     for row in spamreader:
             for key in row.keys():
                # print(row)                
                 try:
                     row[key]=int(row[key])
-                    
                 except:
                     continue
             mydata.append(row)
-  
-#TESTING    
-print mydata[0]
+    #print mydata, '\n'
+    #print len(mydata),'\n'
+    for element in range(len(mydata)):
+        m=mydata[element].keys()
+        for value in m:
+            #print isinstance(mydata[element][value],str)
+            if isinstance(mydata[element][value], str):
+                print mydata[element]
+                somestr = mydata[element]['HOSPITALS']                
+                del mydata[element]['HOSPITALS']
+                #print mydata[element][value]
+                print mydata[element]
     
