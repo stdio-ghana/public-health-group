@@ -7,8 +7,6 @@
 def readData():
   return data[]
 
-
-
 def test_enoughData():
   assert readData() == data[]
 
