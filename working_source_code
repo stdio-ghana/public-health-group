@@ -28,3 +28,24 @@ with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","rb") as 
                 print mydata[element]
 '''
     
+import csv
+#from pylab import *
+mydata =[]
+with open("C:\\Users\\sophos\\Desktop\\pharmacy.csv","r") as csvfile:
+    spamreader = csv.DictReader(csvfile)    
+    for row in spamreader:
+            for key in row.keys():                
+                try:
+                    row[key]=int(row[key])
+                except:
+                    continue
+            mydata.append(row)
+
+    for element in range(len(mydata)):
+        m=mydata[element].keys()
+        for value in m:
+            if isinstance(mydata[element][value], str):
+                mydata[element].pop(value,None)
+                break
+    print (mydata)
+'''
