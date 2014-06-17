@@ -26,4 +26,5 @@ with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","rb") as 
                 del mydata[element]['HOSPITALS']
                 #print mydata[element][value]
                 print mydata[element]
+'''
     
