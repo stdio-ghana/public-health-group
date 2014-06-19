@@ -1,14 +1,37 @@
-from pandas import *
 import csv
+import Tkinter, tkFileDialog
 from pylab import *
+from math import *
+
 mydata =[]
-with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","rb") as csvfile:
+#path_name=str(input('Enter the absolute path name: ' ))
+
+k=[]
+with open ('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv'
+,"rb") as csvfile:
+     spamreader = csv.reader(csvfile,delimiter =',')    
+     for row in spamreader:
+         k.append(row[0])
+         
+print '*************************************************************************************************************************************************** '
+print '                                                                PUBLIC HEALTH REPORT                                                     '
+print '*************************************************************************************************************************************************** '
+
+with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv'
+,"rb") as csvfile:
+     spamreader = csv.reader(csvfile,delimiter =',')    
+     for row in spamreader:
+         row = [str(e) for e in row]
+         print('\t'.join(row))
+         
+with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv',"rb") as csvfile:
     spamreader = csv.reader(csvfile)    
     for row in spamreader:
         r=row
         break
 del r[0]
-with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","r") as csvfile:
+
+with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv',"r") as csvfile:
     spamreader = csv.DictReader(csvfile)    
     for row in spamreader:
             for key in row.keys():                
@@ -20,11 +43,24 @@ with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","r") as c
     w=[[i] for i in range(len(mydata))]
     for element in range(len(mydata)):
         for value in r:
-            w[element].append(mydata[element][value])
+            w[element].append(mydata[element][value]) 
         del w[element][0]
-        plot(w[element])
-w=array(w)
-h=DataFrame(w,columns=r)
-print h
+        plot(w[element],label='slow')
+        
 xticks(range(len(r)),r)
+ylabel('Number of Cases Recorded')
+
+print'\n'
+print '******************************************************************** '
+print '                             SUMMARY                         '
+print '******************************************************************** '
+
+for values in range(len(mydata)):
+    maximum=max(w[values])
+    minimum=min(w[values])
+    average=sum(w[values])/len(w[values])
+    y=math.std(w[values])
+
+    print str(k[values+1])+':    Maximum = '+str( maximum)+'         '+ 'Minimum = '+str(minimum)+'       '+ 'Average = '+str(average)
+    print y
 show()
