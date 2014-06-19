@@ -1,11 +1,13 @@
-    
+from pandas import *
 import csv
 from pylab import *
 mydata =[]
-with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","r") as csvfile:
+with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","rb") as csvfile:
     spamreader = csv.reader(csvfile)    
     for row in spamreader:
-        print row
+        r=row
+        break
+del r[0]
 with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","r") as csvfile:
     spamreader = csv.DictReader(csvfile)    
     for row in spamreader:
@@ -15,12 +17,14 @@ with open("C:\Users\WILLICHIE\Desktop\Python staffs\health_record.csv","r") as c
                 except:
                     continue
             mydata.append(row)
-
+    w=[[i] for i in range(len(mydata))]
     for element in range(len(mydata)):
-        m=mydata[element].keys()
-        for value in m:
-            if isinstance(mydata[element][value], str):
-                mydata[element].pop(value,None)
-                break
-        plot(mydata[element].values())
+        for value in r:
+            w[element].append(mydata[element][value])
+        del w[element][0]
+        plot(w[element])
+w=array(w)
+h=DataFrame(w,columns=r)
+print h
+xticks(range(len(r)),r)
 show()
