@@ -1,52 +1,65 @@
+
+
 import csv
-import Tkinter, tkFileDialog
 from pylab import *
 from math import *
+import os
 
 mydata =[]
 #path_name=str(input('Enter the absolute path name: ' ))
 
 k=[]
-with open ('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv'
-,"rb") as csvfile:
+try:
+    with open('C:\Users\Gafar\Desktop\hospital.csv',"r")as csvfile:
      spamreader = csv.reader(csvfile,delimiter =',')    
      for row in spamreader:
-         k.append(row[0])
+         k.append(row[0])   
+except IOError:
+    print "Error:File does not exist." 
+    
          
 print '*************************************************************************************************************************************************** '
 print '                                                                PUBLIC HEALTH REPORT                                                     '
 print '*************************************************************************************************************************************************** '
 
-with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv'
-,"rb") as csvfile:
+try:
+    with  open('C:\Users\Gafar\Desktop\hospital.csv',"r") as csvfile:
      spamreader = csv.reader(csvfile,delimiter =',')    
      for row in spamreader:
          row = [str(e) for e in row]
          print('\t'.join(row))
+except IOError:
+    print "Error:File does not exist." 
+    
          
-with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv',"rb") as csvfile:
-    spamreader = csv.reader(csvfile)    
-    for row in spamreader:
+try:
+    with  open('C:\Users\Gafar\Desktop\hospital.csv',"r") as csvfile:
+     spamreader = csv.reader(csvfile)    
+     for row in spamreader:
         r=row
         break
+except IOError:
+    print "Error:File does not exist." 
+    
 del r[0]
-
-with open('C:\Users\WILLICHIE\Desktop\Python staffs\hospital.csv',"r") as csvfile:
-    spamreader = csv.DictReader(csvfile)    
-    for row in spamreader:
-            for key in row.keys():                
-                try:
-                    row[key]=int(row[key])
-                except:
-                    continue
-            mydata.append(row)
+try:
+    with  open('C:\Users\Gafar\Desktop\hospital.csv',"r") as csvfile:
+     spamreader = csv.DictReader(csvfile)    
+     for row in spamreader:
+                 for key in row.keys():                
+                    try:
+                        row[key]=int(row[key])
+                    except:
+                        continue
+                 mydata.append(row)
     w=[[i] for i in range(len(mydata))]
     for element in range(len(mydata)):
         for value in r:
             w[element].append(mydata[element][value]) 
         del w[element][0]
         plot(w[element],label='slow')
-        
+except IOError:
+    print "Error:File does not exist."         
 xticks(range(len(r)),r)
 ylabel('Number of Cases Recorded')
 
@@ -59,8 +72,8 @@ for values in range(len(mydata)):
     maximum=max(w[values])
     minimum=min(w[values])
     average=sum(w[values])/len(w[values])
-    y=math.std(w[values])
+   # y=math.std(w[values])
 
-    print str(k[values+1])+':    Maximum = '+str( maximum)+'         '+ 'Minimum = '+str(minimum)+'       '+ 'Average = '+str(average)
-    print y
+    print str(k[values+1])+' :    Maximum = '+str( maximum)+'         '+ 'Minimum = '+str(minimum)+'       '+ 'Average = '+str(average)
+    #print y
 show()
