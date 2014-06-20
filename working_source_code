@@ -11,10 +11,12 @@ from pylab import *
 from math import *
 import os
 
+
 mydata =[]#mydata is a list that is going to contain that read values in the file
 while True:
     
     a= raw_input("Enter file name with extension:")
+    print '\n'
 
     k=[]
     try:
@@ -25,9 +27,11 @@ while True:
                 
    
          
-        print '*************************************************************************************************************************************************** '
-        print '                                                                PUBLIC HEALTH REPORT                                                     '
-        print '*************************************************************************************************************************************************** '
+        print '==================================================================================================================================================== '
+        print '====================================================================================================================================================='
+        print '=========================================================       PUBLIC HEALTH REPORT     ============================================================'
+        print '====================================================================================================================================================='        
+        print '====================================================================================================================================================='
 
         with  open(a,"r") as csvfile:
             spamreader = csv.reader(csvfile,delimiter =',')    
@@ -64,7 +68,7 @@ while True:
                 xticks(range(len(r)),r)
         break
     except IOError:
-        print "Error!!!: File does not exist." 
+        print "ERROR!!! FILE DOES NOT EXIST." 
         continue        
 
 ylabel('Number of Cases Recorded')
@@ -75,20 +79,22 @@ if a[0] == 'd':
 elif a[0] == 'c':
     head = 'PLOT OF THE NUMBER OF CASES OF MALARIA WITH TIME'
 elif a[0] == 'h':
-    head = 'PLOT OF THE NUMBER OF CASES OF MALARIA FOR THREE HOSPITALS WITH TIME'    
+    head = 'PLOT OF THE NUMBER OF CASES OF MALARIA FOR THREE HOSPITALS WITH TIME'   
+
     
 title(head)
 print'\n'
-print '******************************************************************** '
-print '                             SUMMARY                         '
-print '******************************************************************** '
+print '===================================================================='
+print '===================================================================='
+print '============================     SUMMARY     ======================='
+print '===================================================================='
+print '===================================================================='
 
 for values in range(len(mydata)):
     maximum=max(w[values])
     minimum=min(w[values])
     average=sum(w[values])/len(w[values])
-   # y=math.std(w[values])
 
     print str(k[values+1])+' :    Maximum = '+str( maximum)+'         '+ 'Minimum = '+str(minimum)+'       '+ 'Average = '+str(average)
-    #print y
+    
 show()
