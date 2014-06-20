@@ -12,7 +12,4 @@ Non-Functional Requirements:
 related disease within a specific time frame.
 
 
-Use Case:
-A user should be able to query to have a short forecast report depicting some
-statistics on the data.
 
